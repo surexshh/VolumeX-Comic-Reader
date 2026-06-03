@@ -77,9 +77,22 @@ VolumeX is a modern, cross-platform desktop application built for comic enthusia
 |:---:|
 | ![Bookmarks and Liked Comic Page](screenshots/Bookmarks_and_Liked_Comic_Page.png) |
 
+------
+
+## 📣 Feedback & Feature Requests
+
+Your feedback helps shape the future of VolumeX! Whether you found a bug, want to request a cinematic feature, or just love the reader engine, let me know.
+
+<div align="center">
+  <a href="https://forms.gle/MWhgZqVpQJYx9Fyy8" target="_blank">
+    <img src="https://img.shields.io/badge/Submit_Feedback_&_Bugs-🚀-EA4335?style=for-the-badge&logo=googleforms&logoColor=white" alt="Submit Feedback Button" height="45"/>
+  </a>
+</div>
+
+---
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/volumex/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/surexshh/volumex/issues).
 
 ## 📝 License
 

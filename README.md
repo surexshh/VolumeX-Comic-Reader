@@ -53,7 +53,29 @@ VolumeX is a modern, cross-platform desktop application built for comic enthusia
 
 ## 📸 Screenshots
 
-*(Add your screenshots here! Take screenshots of the Library in Poster mode, the Settings Visual Engine tab, and the Reader in Cinematic mode.)*
+### 🖥️ App Core Navigation
+| **Main Dashboard / Library View** | **Currently Reading Details** |
+|:---:|:---:|
+| ![First Page](screenshots/First_Page.png) | ![Currently Reading page](screenshots/Currently_Reading_page.png) |
+
+### 📖 The Immersive Reading Engine
+| **Standard Windowed Reading Mode** | **True Cinematic Full-Screen View** |
+|:---:|:---:|
+| ![Reading Mode](screenshots/Reading_Mode.png) | ![Reading In Full Screen Mode](screenshots/Reading_In_Full_Screen_Mode.png) |
+
+### 🎛️ Feature & Personalization Control Panels
+| **General Preferences** | **Custom Layout & Visual Engine** |
+|:---:|:---:|
+| ![Settings Panel 1](screenshots/Settings_Panel_1.png) | ![Settings Panel 2](screenshots/Settings_Panel_2.png) |
+
+| **Deep Keyboard Mapping Config** | **System Information & Project Engine** |
+|:---:|:---:|
+| ![Settings Panel 3](screenshots/Settings_Panel_3.png) | ![Settings Panel 4](screenshots/Settings_Panel_4.png) |
+
+### 🔖 Library Curation
+| **Saved Collections & Bookmarks** |
+|:---:|
+| ![Bookmarks and Liked Comic Page](screenshots/Bookmarks_and_Liked_Comic_Page.png) |
 
 ## 🤝 Contributing
 

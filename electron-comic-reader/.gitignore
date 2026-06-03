@@ -1,0 +1,10 @@
+node_modules/
+build/
+release/
+.DS_Store
+*.log
+
+*.cbz
+*.cbr
+*.pdf
+*.epub

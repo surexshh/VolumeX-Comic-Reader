@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* ── Design Tokens ── */
+:root {
+  color-scheme: dark;
+
+  /* Core palette */
+  --bg:         167 47% 6%;      /* #091413 deep black */
+  --fg:         210 20% 95%;
+  --border:     167 20% 14%;
+  --muted:      167 20% 9%;
+  --muted-fg:   220 10% 50%;
+  --card:       167 24% 8%;
+  --sidebar:    167 30% 5%;
+  --surface:    167 18% 11%;
+  --glass:      167 18% 13%;
+
+  /* Accent */
+  --primary:    0 76% 51%;       /* #DC2525 crimson red */
+  --accent:     348 80% 58%;     /* rose hover */
+
+  /* Neon glow values */
+  --glow-primary: rgba(220, 37, 37, 0.5);
+  --glow-soft:    rgba(220, 37, 37, 0.2);
+
+  /* Timing */
+  --dur-fast:   120ms;
+  --dur-base:   200ms;
+  --dur-slow:   350ms;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  /* Background is provided by DynamicBackgroundEngine — keep html/body transparent */
+  background: transparent;
+  color: hsl(var(--fg));
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  overflow: hidden;
+}
+
+img { -webkit-user-drag: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar           { width: 5px; height: 5px; }
+::-webkit-scrollbar-track     { background: transparent; }
+::-webkit-scrollbar-thumb     {
+  background: hsl(var(--border));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-fg) / 0.5); }
+::-webkit-scrollbar-corner    { background: transparent; }
+
+/* ── Drop target ── */
+.drop-target {
+  outline: 2px dashed hsl(var(--primary));
+  outline-offset: -8px;
+  background: hsl(var(--primary) / 0.06);
+}
+
+/* ── Cover gradients ── */
+.cover-main {
+  background:
+    linear-gradient(180deg,
+      rgba(9, 20, 19, 0.0)  0%,
+      rgba(9, 20, 19, 0.04) 180px,
+      rgba(9, 20, 19, 0.96) 520px),
+    hsl(var(--bg));
+}
+
+.cover-sidebar {
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ── Glassmorphism utility ── */
+.glass {
+  background: hsl(var(--glass) / 0.7);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-dark {
+  background: hsl(var(--sidebar) / 0.85);
+  backdrop-filter: blur(32px) saturate(160%);
+  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ── Neon glow text ── */
+.neon-text {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 20px var(--glow-primary), 0 0 40px var(--glow-soft);
+}
+
+/* ── Glow border ── */
+.glow-border {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2), 0 0 24px hsl(var(--primary) / 0.15);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, hsl(var(--primary)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Active indicator glow line ── */
+.active-indicator {
+  position: relative;
+}
+.active-indicator::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: hsl(var(--primary));
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 12px var(--glow-primary), 0 0 24px var(--glow-soft);
+}
+
+/* ── Reader range slider ── */
+.reader-nav-range {
+  height: 4px;
+  border-radius: 999px;
+}
+.reader-nav-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+}
+.reader-nav-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 3px solid hsl(var(--primary));
+  box-shadow:
+    0 0 0 4px hsl(var(--primary) / 0.15),
+    0 0 20px hsl(var(--primary) / 0.8);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.reader-nav-range::-webkit-slider-thumb:hover {
+  box-shadow:
+    0 0 0 6px hsl(var(--primary) / 0.2),
+    0 0 32px hsl(var(--primary) / 1);
+  transform: scale(1.1);
+}
+
+/* ── Shimmer skeleton ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--surface)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ── Noise texture overlay ── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
+
+/* ── Cyber scan line ── */
+.cyber-scan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+  animation: scanLine 3s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Ambient particle dots ── */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: hsl(var(--primary) / 0.6);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Smooth page transition ── */
+.page-enter { animation: fadeInUp 0.25s var(--ease-smooth) both; }
+
+/* ── Button base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  transition: all var(--dur-base) var(--ease-smooth);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: hsl(var(--primary));
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 4px 16px hsl(var(--primary) / 0.4);
+}
+.btn-primary:hover {
+  background: hsl(var(--accent));
+  box-shadow: 0 6px 24px hsl(var(--primary) / 0.6);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  color: hsl(var(--muted-fg));
+  padding: 0.5rem 0.75rem;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: hsl(var(--fg));
+}
+
+/* ── Tooltip ── */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: hsl(var(--surface));
+  border: 1px solid rgba(255,255,255,0.08);
+  color: hsl(var(--fg));
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  letter-spacing: 0.01em;
+}
+[data-tooltip]:hover::after { opacity: 1; }
+
+/* ── Card hover 3D ── */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+}
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(220,37,37,0.25);
+}
+
+/* ── Ken Burns (DynamicBackgroundEngine) ── */
+@keyframes kenBurns {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.0);
+  }
+  to {
+    transform: translate3d(-1.2%, -0.8%, 0) scale(1.08);
+  }
+}
